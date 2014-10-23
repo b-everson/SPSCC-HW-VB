@@ -115,11 +115,16 @@
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
 
         Select Case myEditState
+
             Case EditState.Unchanged
                 clearControls()
                 controlsEnabled(True)
 
                 changeEditState(EditState.Adding)
+
+                'disable navigation
+                btnNext.Enabled = False
+                btnPrevious.Enabled = False
             Case EditState.Editing
                 saveRow(position)
                 myEditState = EditState.Unchanged
